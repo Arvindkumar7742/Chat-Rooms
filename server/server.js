@@ -5,6 +5,10 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 
+// user and room routes
+const userRoutes = require("./Routes/userRoutes");
+const roomRoutes = require("./Routes/roomRoutes");
+
 // Express setup
 const app = express();
 app.use(cors());
@@ -25,3 +29,7 @@ mongoose
       console.log("hey server is listening on Port no - ", process.env.PORT);
     });
   });
+
+//full user routes
+app.use("/api/user", userRoutes);
+app.use("/api/chat", roomRoutes);
